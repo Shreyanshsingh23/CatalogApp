@@ -1,27 +1,25 @@
+import 'package:fitness_app/pages/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final int num = 23;
+    const int num = 23;
     int s = sum();
 
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Fitness App $s",textAlign: TextAlign.left,)),
-        backgroundColor: Colors.pinkAccent,
+        //backgroundColor: Colors.pinkAccent,
       ),
       body: Center(
         child: Container(
-          child: Text("My Fitness App $num"),
+          child: const Text("My Fitness App $num"),
         ),
       ),
-      drawer: Drawer(
-        backgroundColor: Colors.blueGrey,
-        surfaceTintColor: Colors.deepPurple,
-       width: BorderSide.strokeAlignCenter,
-       
-      ),
+      drawer: MyDrawer(),
     );
   }
 
