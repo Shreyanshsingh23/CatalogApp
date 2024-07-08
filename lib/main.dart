@@ -3,6 +3,7 @@ import 'package:fitness_app/pages/utils/routes.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fitness_app/pages/home_page.dart'; //importing home page
+import 'package:fitness_app/pages/widgets/themes.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,21 +23,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,  
        // home: HomePage(),
 
-        themeMode: ThemeMode.light,
-        darkTheme: ThemeData(
-          
-          brightness:   Brightness.dark,     
-         fontFamily: GoogleFonts.lato().fontFamily,
-         
-      
-         
-       ),
-        theme: ThemeData(
-          useMaterial3: false,
-           primarySwatch: Colors.deepPurple,
-          primaryColor: Colors.pink,
-           fontFamily: GoogleFonts.lato().fontFamily,
-         ),
+        themeMode: ThemeMode.dark,
+        darkTheme: MyTheme.darkTheme(context),
+        theme: MyTheme.lightTheme(context),
 
        // initialRoute: "/home",
          routes: {

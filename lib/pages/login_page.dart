@@ -7,14 +7,14 @@ class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPage> createState() => LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPageState extends State<LoginPage> {
   // this State class extends a Stateful widget, i.e. with the help of this State class only I am able to make instant changes in my UI
   // underscore '_' before variable's or class' name means it is derived as private
 
-  String name = "";
+  static String name = "";
   bool pressed = false;
   int n = 0;
 
