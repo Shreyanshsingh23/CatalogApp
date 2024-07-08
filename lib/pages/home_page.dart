@@ -1,17 +1,37 @@
+import 'package:fitness_app/main.dart';
 import 'package:fitness_app/pages/widgets/drawer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness_app/pages/widgets/themes.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
+   
 
   @override
   Widget build(BuildContext context) {
     const int num = 23;
     int s = sum();
+    bool temporary = false;
 
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Fitness App $s",textAlign: TextAlign.left,)),
+        title: Text(
+          "Fitness App $s",
+        ),
+        actions: [
+          IconButton(
+              icon: Icon((MyTheme.isDarkTheme) ?
+                   CupertinoIcons.sun_max
+                  :CupertinoIcons.moon),
+              onPressed: () {
+                temporary = true;
+              }),
+        ],
+
+        centerTitle: true,
+
         //backgroundColor: Colors.pinkAccent,
       ),
       body: Center(
@@ -20,6 +40,9 @@ class HomePage extends StatelessWidget {
         ),
       ),
       drawer: MyDrawer(),
+      floatingActionButton: Container(
+        child: Icon(CupertinoIcons.option),
+      ),
     );
   }
 
