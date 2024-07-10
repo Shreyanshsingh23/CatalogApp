@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 3));
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Fitness App $num",
         ),
         actions: [
@@ -71,13 +71,31 @@ class _HomePageState extends State<HomePage> {
 
         //backgroundColor: Colors.pinkAccent,
       ),
-      body: (CatalogModel.products.isNotEmpty)? ListView.builder(
-          itemCount: CatalogModel.products.length,
-          itemBuilder: (context, index) {
-            return ItemWidgets(
-              item: CatalogModel.products[index],
-            );
-          }) :Center (child:  CircularProgressIndicator()),
+      body: (CatalogModel.products.isNotEmpty)? GridView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisSpacing: 16,
+        crossAxisSpacing: 16), 
+        itemBuilder: (context,index){
+          final item = CatalogModel.products[index];
+         return  Card(
+          clipBehavior: Clip.antiAlias,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+           child: GridTile(
+             header:Container(
+              padding: EdgeInsets.all(8),
+              decoration : const BoxDecoration(
+                color: Colors.deepPurple
+              ),
+              child: Text(item.name,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w900),)),
+               footer: Text(item.price.toString()),
+               child:Image.network(item.image),
+               ),
+         );
+        },
+        itemCount: CatalogModel.products.length,):
+        const Center(
+          child: CircularProgressIndicator(),
+        ),
       drawer: MyDrawer(),
     );
   }
