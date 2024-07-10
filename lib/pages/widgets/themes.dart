@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
-  static bool isDarkTheme = false;
+  static bool isDarkTheme = true;
   static ThemeData lightTheme(BuildContext context) {
-     isDarkTheme = false;
+   
     return ThemeData(
+      brightness: Brightness.light,
       useMaterial3: false,
       primarySwatch: Colors.deepPurple,
       // primaryColor: Colors.pink,
@@ -23,7 +24,6 @@ class MyTheme {
     isDarkTheme = true;
 
     return ThemeData(
-      
       brightness: Brightness.dark,
       fontFamily: GoogleFonts.lato().fontFamily,
     );

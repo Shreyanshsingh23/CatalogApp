@@ -1,30 +1,40 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:fitness_app/main.dart';
+import 'package:fitness_app/models/catalog.dart';
 import 'package:fitness_app/pages/widgets/drawer.dart';
+import 'package:fitness_app/pages/widgets/item_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fitness_app/pages/widgets/themes.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-   
-
   @override
   Widget build(BuildContext context) {
     const int num = 23;
-    int s = sum();
-    bool temporary = false;
+    
+    var brightness = MediaQuery.of(context).platformBrightness;
+bool isDarkMode = (brightness == Brightness.dark);
+ 
+    bool temporary;
+
+    final dummyList = List.generate(
+      15,(index) => CatalogModel.products
+      [0]
+    );
 
     return Scaffold(
+     
       appBar: AppBar(
         title: Text(
-          "Fitness App $s",
+          "Fitness App $num",
         ),
         actions: [
           IconButton(
-              icon: Icon((MyTheme.isDarkTheme) ?
-                   CupertinoIcons.sun_max
-                  :CupertinoIcons.moon),
+              icon: Icon(
+                  //(MyApp.is_DarkTheme) 
+                  isDarkMode ? CupertinoIcons.sun_max : CupertinoIcons.moon),
               onPressed: () {
                 temporary = true;
               }),
@@ -34,15 +44,19 @@ class HomePage extends StatelessWidget {
 
         //backgroundColor: Colors.pinkAccent,
       ),
-      body: Center(
-        child: Container(
-          child: const Text("My Fitness App $num"),
-        ),
-      ),
+      body: ListView.builder(
+         itemCount: dummyList.length,
+        itemBuilder: (context, index)
+      {
+        
+        return ItemWidgets(
+          
+          item: dummyList[index] ,
+        );
+      }),
       drawer: MyDrawer(),
-      floatingActionButton: Container(
-        child: Icon(CupertinoIcons.option),
-      ),
+      
+     
     );
   }
 
