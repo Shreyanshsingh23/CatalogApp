@@ -1,10 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
-import 'dart:ui';
 
 import 'package:fitness_app/models/catalog.dart';
-import 'package:fitness_app/pages/widgets/drawer.dart';
+import 'package:fitness_app/pages/cart_page.dart';
+import 'package:fitness_app/pages/widgets/home_widgets/catalog_heaader.dart';
+import 'package:fitness_app/pages/widgets/home_widgets/catalog_item.dart';
 import 'package:fitness_app/pages/widgets/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -47,16 +48,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const int num = 23;
-
     var brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = (brightness == Brightness.dark);
 
-    bool temporary;
-
     return Scaffold(
-
       backgroundColor: MyTheme.creamColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => CartPage()))
+        ,
+        child: Icon(CupertinoIcons.cart),
+      ),
       body: SafeArea(
         child: Container(
           padding: Vx.m32,
@@ -65,11 +68,9 @@ class _HomePageState extends State<HomePage> {
             children: [
               CatalogHeader(),
               if (CatalogModel.products.isNotEmpty)
-                CatalogList().expand()
+                CatalogList().py16().expand()
               else
-                Center(
-                  child: CircularProgressIndicator(),
-                )
+                const CircularProgressIndicator().centered().expand(),
             ],
           ),
         ),
@@ -80,83 +81,5 @@ class _HomePageState extends State<HomePage> {
   int sum({int a = 20, int b = 3}) {
     //{} are used for optional parameters, i.e. if we will not pass any specific value to the function call then these default values will be considered as parameters, so the sum will be 23
     return a + b;
-  }
-}
-
-class CatalogHeader extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        "Catalog App".text.xl5.bold.color(MyTheme.darkBluishColor).make(),
-        "Trending Products".text.xl2.make()
-      ],
-    );
-  }
-}
-
-class CatalogList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-        itemCount: CatalogModel.products.length,
-        itemBuilder: (context, index) {
-          final catalog = CatalogModel.products[index];
-          return CatalogItem(catalog: catalog);
-        });
-  }
-}
-
-class CatalogItem extends StatelessWidget {
-  final Item catalog;
-
-  const CatalogItem({super.key, required this.catalog});
-
-  @override
-  Widget build(BuildContext context) {
-    return VxBox(
-      
-      child: Row(
-        children: [
-          CatalogImage(image: catalog.image),
-          Expanded(child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-           children: [
-          
-             catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-             catalog.desc.text.textStyle(context.captionStyle).make(),
-             10.heightBox,
-             ButtonBar(
-              alignment: MainAxisAlignment.spaceBetween,
-              
-              children: [
-                "\$${catalog.price}".text.xl.bold.make(),
-                ElevatedButton(onPressed: (){}, child: "Buy".text.make(),
-                style: ButtonStyle(
-                  shape: WidgetStatePropertyAll(StadiumBorder())
-                ),)
-              ],
-             )
-           ],
-          ))
-        ],
-        
-      )
-    ).white.square(150).rounded.make().py16();
-  }
-}
-
-class CatalogImage extends StatelessWidget {
- final String image ;
-
-  const CatalogImage({super.key, required this.image});
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Image.network(image).box.rounded.color(MyTheme.creamColor).make().p16().w40(context);
   }
 }

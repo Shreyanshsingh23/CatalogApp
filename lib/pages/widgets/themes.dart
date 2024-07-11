@@ -8,7 +8,7 @@ class MyTheme {
       brightness: Brightness.light,
       useMaterial3: false,
       primarySwatch: Colors.deepPurple,
-      // primaryColor: Colors.pink,
+       primaryColor: Colors.pink,
       appBarTheme: const AppBarTheme(
           color: Colors.white,
           elevation: 0,

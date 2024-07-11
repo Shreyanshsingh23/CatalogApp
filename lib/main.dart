@@ -1,3 +1,5 @@
+import 'package:fitness_app/pages/cart_page.dart';
+import 'package:fitness_app/pages/home_details_page.dart';
 import 'package:fitness_app/pages/login_page.dart';
 import 'package:fitness_app/pages/utils/routes.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,9 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => const HomePage(),
         MyRoutes.homeRoute: (context) => const HomePage(),
-        MyRoutes.loginRoute: (context) => const LoginPage()
+        MyRoutes.loginRoute: (context) => const LoginPage(),
+        MyRoutes.cartRoute: (context) => CartPage(),
+        
       },
     );
   }
