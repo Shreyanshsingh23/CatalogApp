@@ -1,7 +1,7 @@
 class Item {
   final int id;
   final String name;
-  final String description;
+  final String desc;
   final num price;
   final String color;
   final String image;
@@ -10,7 +10,7 @@ class Item {
       //default constructor
       {required this.id,
       required this.name,
-      required this.description,
+      required this.desc,
       required this.price,
       required this.color,
       required this.image});
@@ -19,7 +19,7 @@ class Item {
     return Item(
         id: map["id"],
         name: map["name"],
-        description: map["description"],
+        desc: map["desc"],
         price: map["price"],
         color: map["color"],
         image: map["image"]);
@@ -36,7 +36,7 @@ class Item {
   toMap() => {
         "id": id,
         "name": name,
-        "description": description,
+        "description": desc,
         "price": price,
         "color": color,
         "image": image,
@@ -44,5 +44,5 @@ class Item {
 }
 
 class CatalogModel {
-  static List<Item> products = [];
+  static List<Item> products =[];
 }
