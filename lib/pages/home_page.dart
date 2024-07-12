@@ -6,7 +6,6 @@ import 'package:fitness_app/models/catalog.dart';
 import 'package:fitness_app/pages/cart_page.dart';
 import 'package:fitness_app/pages/widgets/home_widgets/catalog_heaader.dart';
 import 'package:fitness_app/pages/widgets/home_widgets/catalog_item.dart';
-import 'package:fitness_app/pages/widgets/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,7 +51,7 @@ class _HomePageState extends State<HomePage> {
     bool isDarkMode = (brightness == Brightness.dark);
 
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
           Navigator.push(

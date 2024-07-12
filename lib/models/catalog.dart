@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class Item {
   final int id;
   final String name;
@@ -44,5 +46,12 @@ class Item {
 }
 
 class CatalogModel {
-  static List<Item> products =[];
+  static List<Item> products = [];
+
+  //get item by ID
+  static Item getByID(int id) =>
+      products.firstWhere((element) => element.id == id, orElse: null);
+
+  // get item by position
+  static Item getByPosition(int position) => products[position];  //indirectly position means index which starts from 0
 }

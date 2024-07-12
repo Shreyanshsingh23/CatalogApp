@@ -11,17 +11,18 @@ class HomeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         // backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor:context.theme.cardColor,
       body: SafeArea(
         bottom: false,
         
         child: Column( 
         children: [
          Hero(
-          tag: Key(catalog.id.toString()),
+          tag: Key(catalog.color.toString()),
          child: Image.network(catalog.image).h32(context)).p20(),
          Expanded(
           child: VxArc(
@@ -29,13 +30,13 @@ class HomeDetailsPage extends StatelessWidget {
             arcType: VxArcType.convey,
             edge: VxEdge.top,
             child: Container(
-              color: Colors.white,
+              color: context.theme.canvasColor,
               width:context.screenWidth ,
               
               child: Column(
                 children: [
                   
-             catalog.name.text.xl4.color(MyTheme.darkBluishColor).bold.make(),
+             catalog.name.text.xl4.color(context.theme.primaryColor).bold.make(),
              catalog.desc.text.xl.textStyle(context.captionStyle).make(),
              10.heightBox,
 
@@ -47,7 +48,7 @@ class HomeDetailsPage extends StatelessWidget {
           ),
          ),
          Container(
-          color: Colors.white,
+          color: context.theme.canvasColor,
            child: ButtonBar(
                 alignment: MainAxisAlignment.spaceBetween,
                 

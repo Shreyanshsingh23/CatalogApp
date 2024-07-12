@@ -10,6 +10,6 @@ class CatalogImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Image.network(image).box.rounded.color(MyTheme.creamColor).make().px12().py8().w40(context);
+    return Image.network(image).box.rounded.color(context.theme.cardColor).make().px12().py8().w40(context);
   }
 }

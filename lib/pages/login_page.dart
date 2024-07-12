@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:fitness_app/pages/utils/routes.dart';
+import 'package:fitness_app/pages/widgets/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 
 
@@ -41,7 +45,7 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: context.theme.canvasColor,
       // child: SingleChildScrollView(
       child: Column(
         children: [
@@ -55,8 +59,8 @@ class LoginPageState extends State<LoginPage> {
           ),
           Text(
             "Welcome $name !",
-            style: const TextStyle(
-                color: Colors.deepPurple,
+            style:  TextStyle(
+              
                 fontWeight: FontWeight.bold,
                 fontSize: 20),
           ),
