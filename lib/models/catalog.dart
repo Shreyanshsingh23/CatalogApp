@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 class Item {
   final int id;
@@ -46,12 +45,18 @@ class Item {
 }
 
 class CatalogModel {
+
+   static final catalogModel = CatalogModel.internal();
+
+  CatalogModel.internal();
+
+  factory CatalogModel() => catalogModel;
   static List<Item> products = [];
 
   //get item by ID
-  static Item getByID(int id) =>
-      products.firstWhere((element) => element.id == id, orElse: null);
+   Item getByID(int id) =>
+      products.firstWhere((element) => element.id == id, orElse:  null);
 
   // get item by position
-  static Item getByPosition(int position) => products[position];  //indirectly position means index which starts from 0
+   Item getByPosition(int position) => products[position];  //indirectly position means index of list which starts from 0
 }

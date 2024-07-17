@@ -1,5 +1,4 @@
 import 'package:fitness_app/pages/cart_page.dart';
-import 'package:fitness_app/pages/home_details_page.dart';
 import 'package:fitness_app/pages/login_page.dart';
 import 'package:fitness_app/pages/utils/routes.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static bool is_DarkTheme = true;
+  static bool isDarkTheme = true;
 
   
 
@@ -28,17 +27,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: HomePage(),
 
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
 
       darkTheme: MyTheme.darkTheme(context),
       theme: MyTheme.lightTheme(context),
 
       // initialRoute: "/home",
       routes: {
-        "/": (context) => const HomePage(),
+        "/": (context) => const LoginPage(),
         MyRoutes.homeRoute: (context) => const HomePage(),
         MyRoutes.loginRoute: (context) => const LoginPage(),
-        MyRoutes.cartRoute: (context) => CartPage(),
+        MyRoutes.cartRoute: (context) => const CartPage(),
         
       },
     );

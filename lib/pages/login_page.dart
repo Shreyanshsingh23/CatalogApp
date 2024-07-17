@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:fitness_app/pages/utils/routes.dart';
-import 'package:fitness_app/pages/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -34,6 +33,7 @@ class LoginPageState extends State<LoginPage> {
         });
 
         await Future.delayed(const Duration(seconds: 1));
+        // ignore: use_build_context_synchronously
         await Navigator.pushNamed(context, MyRoutes.homeRoute);
         setState(() {
           pressed = false;

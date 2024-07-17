@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
@@ -47,17 +47,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = (brightness == Brightness.dark);
+  
+   
 
     return Scaffold(
       backgroundColor: context.canvasColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CartPage()))
+              context, MaterialPageRoute(builder: (context) => const CartPage()))
         ,
-        child: Icon(CupertinoIcons.cart),
+        child: const Icon(CupertinoIcons.cart),
       ),
       body: SafeArea(
         child: Container(
@@ -65,9 +65,9 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CatalogHeader(),
+              const CatalogHeader(),
               if (CatalogModel.products.isNotEmpty)
-                CatalogList().py16().expand()
+                const CatalogList().py16().expand()
               else
                 const CircularProgressIndicator().centered().expand(),
             ],
@@ -77,8 +77,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  int sum({int a = 20, int b = 3}) {
-    //{} are used for optional parameters, i.e. if we will not pass any specific value to the function call then these default values will be considered as parameters, so the sum will be 23
-    return a + b;
-  }
 }

@@ -15,16 +15,16 @@ class ItemWidgets extends StatelessWidget {
       
       child: Card(
         child: ListTile(
-          onTap: () => print ("${item.name} Pressed"),
+          onTap: () => (){},
           leading: Image.network(item.image),
           title: Text(item.name),
           subtitle: Text(item.desc),
           trailing: Text(
             "\$${item.price}",
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
-            textScaleFactor: 1.5,
+            textScaler: const TextScaler.linear(1.5),
           ),
         ),
       ),

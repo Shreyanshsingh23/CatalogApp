@@ -1,5 +1,4 @@
 import 'package:fitness_app/models/catalog.dart';
-import 'package:fitness_app/pages/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -53,9 +52,9 @@ class HomeDetailsPage extends StatelessWidget {
                 alignment: MainAxisAlignment.spaceBetween,
                 
                 children: [
-                  "\$${catalog.price}".text.xl4.bold.red700.make(),
+                  "\$${catalog.price}".text.xl4.bold.red700.make().py12(),
                   ElevatedButton(onPressed: (){},
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     shape: WidgetStatePropertyAll(StadiumBorder())
                   ), child: "Add to cart".text.bold.xl.make(),).wh(130, 50)
                 ],
