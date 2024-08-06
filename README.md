@@ -1,6 +1,12 @@
-# fitness_app
+# catalog_app
 
-A new Flutter project.
+A Catalog App made by Flutter.
+
+![Screenshot_1720645889](https://github.com/user-attachments/assets/fcd75a8b-fefd-4da4-b274-46f7bdd800b9)
+
+![Screenshot_1722951688](https://github.com/user-attachments/assets/5473d7f2-c8f9-4749-8486-4be845981087)
+
+
 
 ## Getting Started
 
